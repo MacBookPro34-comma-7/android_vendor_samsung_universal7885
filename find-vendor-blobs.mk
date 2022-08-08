@@ -15,7 +15,7 @@
 #
 
 # get treble info from BoardConfig.mk
-include $(DEVICE_PATH)/BoardConfig.mk
+$(eval $(strip $(shell cat $(DEVICE_PATH)/BoardConfig.mk | grep '^TARGET_COPY_OUT_VENDOR := ')))
 
 define find-vendor-blobs
     $(foreach vendor_file, $(shell find $(1) -type f | sed -n 's|^$(1)/||p'), \
